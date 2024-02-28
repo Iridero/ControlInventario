@@ -17,8 +17,10 @@ namespace ControlInventario
         }
         private void ActualizarListBox()
         {
+            ArticuloDbContext db = new ArticuloDbContext();
+            var articulos = db.ObtenerArticulos();
             lstArticulos.DataSource = null;
-            lstArticulos.DataSource = inventario.Articulos;
+            lstArticulos.DataSource = articulos;
             lstArticulos.DisplayMember = "Descripcion";
         }
         private void Inventario_ArticuloEventHandler(object? sender, ArticuloEventArgs e)

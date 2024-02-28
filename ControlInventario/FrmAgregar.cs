@@ -31,12 +31,18 @@ namespace ControlInventario
             articulo.Descripcion = txtDescripcion.Text;
             articulo.Existencia = int.Parse(txtExistencia.Text);
             articulo.Precio = decimal.Parse(txtPrecio.Text);
-            Inventario.Agregar(articulo);
+
+            ArticuloDbContext db = new ArticuloDbContext();
+            db.AgregarArticulo(articulo);
+
+            //Inventario.Agregar(articulo);
             txtId.Clear();
             txtDescripcion.Clear();
             txtExistencia.Clear();
             txtPrecio.Clear();
             txtId.Focus();
+
+            
         }
     }
 }

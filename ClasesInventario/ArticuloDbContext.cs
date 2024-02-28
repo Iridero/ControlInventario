@@ -11,6 +11,7 @@ public class ArticuloDbContext
     {
         using (var connection = new SqliteConnection(ConnectionString))
         {
+            
             connection.Open();
 
             var command = connection.CreateCommand();

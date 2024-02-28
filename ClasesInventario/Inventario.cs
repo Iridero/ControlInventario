@@ -73,13 +73,7 @@ namespace ClasesInventario
         public Inventario()
         {
             articulos = new List<Articulo>();
-            articulos.Add(new Articulo()
-            {
-                Id = 1,
-                Descripcion = "Lapiz",
-                Existencia = 0,
-                Precio=15
-            }); 
+            
         }
     }
 }
