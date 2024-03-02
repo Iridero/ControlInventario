@@ -18,23 +18,23 @@ namespace ControlInventario
             InitializeComponent();
         }
         public Inventario Inventario { get; set; }
-
+        public ArticuloDbContext Context { get; set; }
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void btnAgregar_Click(object sender, EventArgs e)
+        private async void btnAgregar_Click(object sender, EventArgs e)
         {
             Articulo articulo = new Articulo();
-            articulo.Id = int.Parse(txtId.Text);
+            //articulo.Id = int.Parse(txtId.Text);
             articulo.Descripcion = txtDescripcion.Text;
             articulo.Existencia = int.Parse(txtExistencia.Text);
             articulo.Precio = decimal.Parse(txtPrecio.Text);
 
             ArticuloDbContext db = new ArticuloDbContext();
             db.AgregarArticulo(articulo);
-
+            
             //Inventario.Agregar(articulo);
             txtId.Clear();
             txtDescripcion.Clear();

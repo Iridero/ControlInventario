@@ -12,6 +12,7 @@ namespace Entrada
 {
     public partial class FrmPinPad : Form
     {
+        public event EventHandler AccesoConcedido;
         public FrmPinPad()
         {
             InitializeComponent();

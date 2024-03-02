@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class ArticuloDbContext
 {
     private const string ConnectionString = "Data Source=articulos.db";
-
+    public event EventHandler<ArticuloEventArgs> ArticuloEventHandler;
     public ArticuloDbContext()
     {
         using (var connection = new SqliteConnection(ConnectionString))
@@ -28,7 +28,14 @@ public class ArticuloDbContext
         }
     }
 
-    public void AgregarArticulo(Articulo articulo)
+    private void AlCambiarArticulo(Articulo articulo)
+    {
+        ArticuloEventArgs e = new ArticuloEventArgs(articulo);
+        EventHandler<ArticuloEventArgs> handler =
+            ArticuloEventHandler;
+        handler?.Invoke(this, e);
+    }
+    public async Task AgregarArticulo(Articulo articulo)
     {
         using (var connection = new SqliteConnection(ConnectionString))
         {
@@ -43,24 +50,25 @@ public class ArticuloDbContext
             command.Parameters.AddWithValue("$precio", articulo.Precio);
             command.Parameters.AddWithValue("$existencia", articulo.Existencia);
 
-            command.ExecuteNonQuery();
+            await command.ExecuteNonQueryAsync();
+            AlCambiarArticulo(articulo);
         }
     }
 
-    public List<Articulo> ObtenerArticulos()
+    public async Task< List<Articulo> > ObtenerArticulos()
     {
         var articulos = new List<Articulo>();
 
         using (var connection = new SqliteConnection(ConnectionString))
         {
-            connection.Open();
+            await connection.OpenAsync();
 
             var command = connection.CreateCommand();
             command.CommandText = "SELECT Id, Descripcion, Precio, Existencia FROM Articulos;";
 
-            using (var reader = command.ExecuteReader())
+            using (var reader =await command.ExecuteReaderAsync())
             {
-                while (reader.Read())
+                while (await reader.ReadAsync())
                 {
                     articulos.Add(new Articulo
                     {
@@ -76,11 +84,11 @@ public class ArticuloDbContext
         return articulos;
     }
 
-    public void ActualizarArticulo(Articulo articulo)
+    public async Task ActualizarArticulo(Articulo articulo)
     {
         using (var connection = new SqliteConnection(ConnectionString))
         {
-            connection.Open();
+            await connection.OpenAsync();
 
             var command = connection.CreateCommand();
             command.CommandText = @"
@@ -93,21 +101,21 @@ public class ArticuloDbContext
             command.Parameters.AddWithValue("$existencia", articulo.Existencia);
             command.Parameters.AddWithValue("$id", articulo.Id);
 
-            command.ExecuteNonQuery();
+            await command.ExecuteNonQueryAsync();
         }
     }
 
-    public void EliminarArticulo(int id)
+    public async Task EliminarArticulo(int id)
     {
         using (var connection = new SqliteConnection(ConnectionString))
         {
-            connection.Open();
+            await connection.OpenAsync();
 
             var command = connection.CreateCommand();
             command.CommandText = "DELETE FROM Articulos WHERE Id = $id;";
             command.Parameters.AddWithValue("$id", id);
 
-            command.ExecuteNonQuery();
+            await command.ExecuteNonQueryAsync();
         }
     }
 }

@@ -8,16 +8,19 @@ namespace ControlInventario
         {
             InitializeComponent();
             inventario = new Inventario();
+            db=new ArticuloDbContext();
         }
         Inventario inventario;
+        ArticuloDbContext db;
         private void Form1_Load(object sender, EventArgs e)
         {
             ActualizarListBox();
-            inventario.ArticuloEventHandler += Inventario_ArticuloEventHandler;
+            db = new ArticuloDbContext();
+            db.ArticuloEventHandler += Inventario_ArticuloEventHandler;
         }
         private void ActualizarListBox()
         {
-            ArticuloDbContext db = new ArticuloDbContext();
+            
             var articulos = db.ObtenerArticulos();
             lstArticulos.DataSource = null;
             lstArticulos.DataSource = articulos;
@@ -33,6 +36,7 @@ namespace ControlInventario
         {
             FrmAgregar frmAgregar = new FrmAgregar();
             frmAgregar.Inventario = inventario;
+            frmAgregar.Context = db;
             frmAgregar.ShowDialog();
         }
 
