@@ -33,7 +33,7 @@ namespace ControlInventario
             articulo.Precio = decimal.Parse(txtPrecio.Text);
 
             ArticuloDbContext db = new ArticuloDbContext();
-            db.AgregarArticulo(articulo);
+            await db.AgregarArticulo(articulo);
             
             //Inventario.Agregar(articulo);
             txtId.Clear();

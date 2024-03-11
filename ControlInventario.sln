@@ -9,7 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClasesInventario", "ClasesI
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Controles", "Controles\Controles.csproj", "{AFC12FA2-7C0A-45A4-8977-A63E9B9B7BF0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entrada", "Entrada\Entrada.csproj", "{66B0B686-51E9-4628-B7DD-C940EFE79DD6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entrada", "Entrada\Entrada.csproj", "{66B0B686-51E9-4628-B7DD-C940EFE79DD6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GaleriaDeImagenes", "GaleriaDeImagenes\GaleriaDeImagenes.csproj", "{23E1DF24-3EC7-44C2-8CBC-FDA7E8BC9F7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Archivos", "Archivos\Archivos.csproj", "{10696699-301C-4C44-9B53-8377E9D154E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{66B0B686-51E9-4628-B7DD-C940EFE79DD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66B0B686-51E9-4628-B7DD-C940EFE79DD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66B0B686-51E9-4628-B7DD-C940EFE79DD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23E1DF24-3EC7-44C2-8CBC-FDA7E8BC9F7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23E1DF24-3EC7-44C2-8CBC-FDA7E8BC9F7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23E1DF24-3EC7-44C2-8CBC-FDA7E8BC9F7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23E1DF24-3EC7-44C2-8CBC-FDA7E8BC9F7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10696699-301C-4C44-9B53-8377E9D154E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10696699-301C-4C44-9B53-8377E9D154E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10696699-301C-4C44-9B53-8377E9D154E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10696699-301C-4C44-9B53-8377E9D154E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
